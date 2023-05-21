@@ -5,6 +5,7 @@ import PySide6.QtCore
 import PySide6.QtWidgets
 import cv2
 
+import cv2_converter
 import main_seq_conv_ui
 
 
@@ -14,6 +15,7 @@ class main_win_conveter(main_seq_conv_ui.Ui_MainWindow,QtWidgets.QMainWindow):
         self.setupUi(self)
         self.setWindowTitle("Sequence Converter")
         self.save_reset_buttonBox.accepted.connect(self.getinputs)
+        # self.save_reset_buttonBox.
         self.seq_dir_TB.clicked.connect(self.get_seqpath)
         self.out_dir_TB.clicked.connect(self.get_outpath)
 
@@ -21,14 +23,12 @@ class main_win_conveter(main_seq_conv_ui.Ui_MainWindow,QtWidgets.QMainWindow):
         seq_path = QtWidgets.QFileDialog.getExistingDirectory(self,'Select Folder')
         if seq_path:
             self.seq_dir_LE.setText(seq_path)
-        
         return seq_path
 
     def get_outpath(self):
-        out_path,ext = QtWidgets.QFileDialog.getOpenFileName(self,'Select Folder')
+        out_path,ext = QtWidgets.QFileDialog.getSaveFileName(self,'Select Folder')
         if out_path:
             self.out_dir_LE.setText(out_path)
-        
         return out_path
 
 
@@ -40,8 +40,17 @@ class main_win_conveter(main_seq_conv_ui.Ui_MainWindow,QtWidgets.QMainWindow):
         res_x = self.res_spinBox_width.value() 
         res_y = self.res_spinBox_height.value()
         def_res = self.def_res_CB.isChecked()
+        if def_res is True:
+            res = [1080,1920]
+        else:
+            res = [res_x,res_y]
+
+        cv2_converter.seq_converter(seq_path,out_path,fps,res)
 
         print(seq_path,out_path,fps,res_x,res_y,def_res)
+
+    # def seq_convert(self):
+    #     cv2_converter.seq_converter(seq_path,out_path,fps,res)
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication()

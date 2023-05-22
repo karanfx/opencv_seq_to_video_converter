@@ -7,6 +7,7 @@ import cv2
 
 import cv2_converter
 import main_seq_conv_ui
+import progress_ui
 
 
 class main_win_conveter(main_seq_conv_ui.Ui_MainWindow,QtWidgets.QMainWindow):
@@ -15,6 +16,7 @@ class main_win_conveter(main_seq_conv_ui.Ui_MainWindow,QtWidgets.QMainWindow):
         self.setupUi(self)
         self.setWindowTitle("Sequence Converter")
         self.save_reset_buttonBox.accepted.connect(self.convert)
+        #self.save_reset_buttonBox.accepted.connect(self.progress)
         self.save_reset_buttonBox.rejected.connect(self.closeprogram)
         self.save_reset_buttonBox.button(QtWidgets.QDialogButtonBox.Reset).clicked.connect(self.resetui)
         self.seq_dir_TB.clicked.connect(self.get_seqpath)
@@ -40,9 +42,10 @@ class main_win_conveter(main_seq_conv_ui.Ui_MainWindow,QtWidgets.QMainWindow):
         fps = self.fps_spinbox.value()
         res_x = self.res_spinBox_width.value() 
         res_y = self.res_spinBox_height.value()
+
+        #set resolution
         def_res = self.def_res_CB.isChecked()
         if def_res is True:
-            #res = [1080,1920]
             
             seq_path += '/'
             img_path = os.path.join(seq_path,os.listdir(seq_path)[0])
@@ -55,7 +58,18 @@ class main_win_conveter(main_seq_conv_ui.Ui_MainWindow,QtWidgets.QMainWindow):
         else:
             res = [res_x,res_y]
 
-        cv2_converter.seq_converter(seq_path,out_path,fps,res)
+        #converting to .mp4 here
+        pr = cv2_converter.seq_converter(seq_path,out_path,fps,res)
+
+        # pr = 42
+        #setting up progress bar
+        prog = progressdialog()
+        prog.progressBar.setValue(pr)
+        prog.exec()
+
+        prog.res_out_LB.setText(res)
+        prog.fps_out_LB.setText(str(fps))
+        prog.path_out_LB.setText(out_path)
 
         print(seq_path,out_path,fps,res,def_res)
 
@@ -72,6 +86,25 @@ class main_win_conveter(main_seq_conv_ui.Ui_MainWindow,QtWidgets.QMainWindow):
         print('close')
         QtWidgets.QApplication.exit()
 
+    def progress(self):
+        
+        prog = progressdialog()
+        prog.exec()
+
+
+#Add Progress UI
+class progressdialog(progress_ui.Ui_Dialog,QtWidgets.QDialog):
+    def __init__(self):
+        super(progressdialog,self).__init__()
+        self.setupUi(self)
+        self.setWindowTitle("Progress")
+        
+        #self.progress_parm()
+
+
+    # def progress_parm(self):
+    #     self.progressBar.setValue(5)
+        
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication()

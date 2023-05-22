@@ -25,12 +25,14 @@ import os
 
 #     vid.release()
 #     return def_res
-seq_path = 'D:/Work/python_dev/test_seq/'
+# seq_path = 'D:/Work/python_dev/test_seq/'
 
-seq_path = seq_path.replace('\\','/')
-seq_path += '/'
-img_path = os.path.join(seq_path,os.listdir(seq_path)[0])
-print(img_path)
+# seq_path = seq_path.replace('\\','/')
+# seq_path += '/'
+# img_path = os.path.join(seq_path,os.listdir(seq_path)[0])
+# print(img_path)
+
+
 # repath = seq_path.replace('/','\\')
 # print(repath)
 
@@ -43,3 +45,10 @@ print(img_path)
 # print(res)
 # print(img_path)
 # print(img_res)
+def testfun():
+    if True:
+        i = 10
+        return i
+    
+
+print(testfun())

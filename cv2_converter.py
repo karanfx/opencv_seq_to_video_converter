@@ -12,7 +12,7 @@ def seq_converter(seq_path,out_path,fps,res=[1280,720]):
         i = os.path.join(seq_path,i)
         #i = str(seq_path+i)
         i = i.replace('\\','/')
-        print(i)
+        #print(i)
         img_path.append(i)
 
     fourcc = cv2.VideoWriter_fourcc(*'mp4v')
@@ -26,8 +26,10 @@ def seq_converter(seq_path,out_path,fps,res=[1280,720]):
 
     for i in range(len(img_path)):
         vid.write(cv2.imread(img_path[i]))
-        print(i+1)
+        prg = i+1
+        print(prg)
+        return prg
 
-    #vid.release()
+    vid.release()
     
 # seq_converter('D:\Work\python_dev\opencv_video_converter','',21)

@@ -61,10 +61,9 @@ class main_win_conveter(main_seq_conv_ui.Ui_MainWindow,QtWidgets.QMainWindow):
         #converting to .mp4 here
         pr = cv2_converter.seq_converter(seq_path,out_path,fps,res)
 
-        # pr = 42
         #setting up progress bar
         prog = progressdialog()
-        prog.progressBar.setValue(pr)
+        # prog.progressBar.setValue(pr)
         prog.exec()
 
         prog.res_out_LB.setText(res)
@@ -98,13 +97,25 @@ class progressdialog(progress_ui.Ui_Dialog,QtWidgets.QDialog):
         super(progressdialog,self).__init__()
         self.setupUi(self)
         self.setWindowTitle("Progress")
+        #main_win_conveter.convert.
         
         #self.progress_parm()
+
+    def getres(self):
+        seq_path = main_win_conveter.seq_dir_LE.text()
+        seq_path += '/'
+        img_path = os.path.join(seq_path,os.listdir(seq_path)[0])
+        img_path = img_path.replace('\\','/')
+        print(img_path)
+        res = list(cv2.imread(img_path).shape)
+        del res[2]
+        res.reverse()
+        self.res_out_LB.setText(res)
+        print(res)
 
 
     # def progress_parm(self):
     #     self.progressBar.setValue(5)
-        
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication()

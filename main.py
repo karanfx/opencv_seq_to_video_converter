@@ -1,3 +1,19 @@
+# © 2023 Karan Mirajkar - Some Rights Reserved
+
+# This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 License.
+# To view a copy of this license, visit https://creativecommons.org/licenses/.
+
+# You are free to:
+#   - Share: Copy and redistribute the material in any medium or format
+#   - Adapt: Remix, transform, and build upon the material
+
+# Under the following terms:
+#   - Attribution: You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
+#   - ShareAlike: If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.
+
+
+
+
 from typing import Optional
 from PySide6 import QtWidgets
 import os
@@ -50,25 +66,29 @@ class main_win_conveter(main_seq_conv_ui.Ui_MainWindow,QtWidgets.QMainWindow):
             seq_path += '/'
             img_path = os.path.join(seq_path,os.listdir(seq_path)[0])
             img_path = img_path.replace('\\','/')
-            print(img_path)
+            # print(img_path)
             res = list(cv2.imread(img_path).shape)
             del res[2]
             res.reverse()
-            print(res)
+            # print(res)
         else:
             res = [res_x,res_y]
 
-        #converting to .mp4 here
-        pr = cv2_converter.seq_converter(seq_path,out_path,fps,res)
+        # #converting to .mp4 here
+        # pr = cv2_converter.seq_converter(seq_path,out_path,fps,res)
 
-        #setting up progress bar
-        prog = progressdialog()
-        # prog.progressBar.setValue(pr)
-        prog.exec()
+        cv2_converter.seq_converter(seq_path,out_path,fps,res)
 
-        prog.res_out_LB.setText(res)
-        prog.fps_out_LB.setText(str(fps))
-        prog.path_out_LB.setText(out_path)
+        os.system(out_path)
+
+        # #setting up progress bar
+        # prog = progressdialog()
+        # # prog.progressBar.setValue(pr)
+        # prog.exec()
+
+        # prog.res_out_LB.setText(res)
+        # prog.fps_out_LB.setText(str(fps))
+        # prog.path_out_LB.setText(out_path)
 
         print(seq_path,out_path,fps,res,def_res)
 

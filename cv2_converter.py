@@ -1,3 +1,16 @@
+# © 2023 Karan Mirajkar - Some Rights Reserved
+
+# This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 License.
+# To view a copy of this license, visit https://creativecommons.org/licenses/.
+
+# You are free to:
+#   - Share: Copy and redistribute the material in any medium or format
+#   - Adapt: Remix, transform, and build upon the material
+
+# Under the following terms:
+#   - Attribution: You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
+#   - ShareAlike: If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.
+
 import cv2
 import os
 
@@ -5,7 +18,7 @@ import os
 def seq_converter(seq_path,out_path,fps,res=[1280,720]):
     
     # Sort the file names in ascending order if necessary
-    images = [img for img in os.listdir(seq_path) if img.endswith(".png")]
+    images = [img for img in os.listdir(seq_path) if img.endswith(".jpg")]
     images.sort()  
     print(images)
 

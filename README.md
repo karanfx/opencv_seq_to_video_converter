@@ -29,6 +29,7 @@ Install the required dependencies:
   pip install -r requirements.txt
 
 ##Usage
+---
 
 Run the application:   
 python main.py
@@ -45,6 +46,7 @@ Screenshots
 
 
 ##Contributing
+---
 Contributions are welcome! If you would like to contribute to this project, please follow these steps:
 
 Fork the repository.

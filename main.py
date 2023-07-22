@@ -79,6 +79,7 @@ class main_win_conveter(main_seq_conv_ui.Ui_MainWindow,QtWidgets.QMainWindow):
 
         cv2_converter.seq_converter(seq_path,out_path,fps,res)
 
+        #Auto open video after exporting
         os.system(out_path)
 
         # #setting up progress bar
@@ -102,7 +103,7 @@ class main_win_conveter(main_seq_conv_ui.Ui_MainWindow,QtWidgets.QMainWindow):
         self.def_res_CB.setChecked(True)
 
     def closeprogram(self):
-        print('close')
+        #print('close')
         QtWidgets.QApplication.exit()
 
     def progress(self):

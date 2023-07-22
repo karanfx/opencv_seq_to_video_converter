@@ -20,7 +20,7 @@ def seq_converter(seq_path,out_path,fps,res=[1280,720]):
     # Sort the file names in ascending order if necessary
     images = [img for img in os.listdir(seq_path) if img.endswith(".jpg")]
     images.sort()  
-    print(images)
+    #print(images)
 
     #get seq resolution
     # frame = cv2.imread(os.path.join(seq_path, images[0]))

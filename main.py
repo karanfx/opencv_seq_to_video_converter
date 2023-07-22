@@ -20,6 +20,7 @@ import os
 import PySide6.QtCore
 import PySide6.QtWidgets
 import cv2
+import qdarkstyle
 
 import cv2_converter
 import main_seq_conv_ui
@@ -31,6 +32,8 @@ class main_win_conveter(main_seq_conv_ui.Ui_MainWindow,QtWidgets.QMainWindow):
         super(main_win_conveter,self).__init__()
         self.setupUi(self)
         self.setWindowTitle("Sequence Converter")
+
+        self.setStyleSheet(qdarkstyle.load_stylesheet())                    #set darkmode
         self.save_reset_buttonBox.accepted.connect(self.convert)
         #self.save_reset_buttonBox.accepted.connect(self.progress)
         self.save_reset_buttonBox.rejected.connect(self.closeprogram)

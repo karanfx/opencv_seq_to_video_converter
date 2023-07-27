@@ -18,7 +18,8 @@ import os
 def seq_converter(seq_path,out_path,fps,res=[1280,720]):
     
     # Sort the file names in ascending order if necessary
-    images = [img for img in os.listdir(seq_path) if img.endswith(".jpg")]
+    # images = [img for img in os.listdir(seq_path) if img.endswith(".jpg")]
+    images = os.listdir(seq_path)
     images.sort()  
     #print(images)
 

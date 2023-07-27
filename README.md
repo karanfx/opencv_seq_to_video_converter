@@ -20,7 +20,7 @@ A Python application that converts an image sequence into a video using PySide f
 
 ## Build/.Exe Download
 
-***[Download](https://drive.google.com/file/d/1hkEUSoWYUskPX1Ckf8rtjIar3JnGvSh-/view?usp=sharing)***
+**[Download](https://drive.google.com/file/d/1hkEUSoWYUskPX1Ckf8rtjIar3JnGvSh-/view?usp=sharing)**
 
 
 ## Installation

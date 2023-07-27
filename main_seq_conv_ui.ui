@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>413</width>
-    <height>343</height>
+    <width>424</width>
+    <height>397</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -24,6 +24,23 @@
        <enum>QFrame::Raised</enum>
       </property>
       <layout class="QGridLayout" name="gridLayout_2">
+       <item row="7" column="0">
+        <widget class="QDialogButtonBox" name="save_reset_buttonBox">
+         <property name="standardButtons">
+          <set>QDialogButtonBox::Cancel|QDialogButtonBox::Reset|QDialogButtonBox::Save</set>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QTextEdit" name="burn_in_TE"/>
+       </item>
+       <item row="6" column="0">
+        <widget class="QCheckBox" name="def_res_CB">
+         <property name="text">
+          <string>Default Resolution</string>
+         </property>
+        </widget>
+       </item>
        <item row="0" column="0">
         <layout class="QHBoxLayout" name="horizontalLayout">
          <item>
@@ -40,6 +57,43 @@
           <widget class="QToolButton" name="seq_dir_TB">
            <property name="text">
             <string>...</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="3" column="0">
+        <layout class="QHBoxLayout" name="horizontalLayout_4">
+         <item>
+          <widget class="QLabel" name="res_LB">
+           <property name="text">
+            <string>Resolution:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="res_spinBox_width">
+           <property name="minimum">
+            <number>1</number>
+           </property>
+           <property name="maximum">
+            <number>9999</number>
+           </property>
+           <property name="value">
+            <number>1920</number>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="res_spinBox_height">
+           <property name="minimum">
+            <number>1</number>
+           </property>
+           <property name="maximum">
+            <number>9999</number>
+           </property>
+           <property name="value">
+            <number>1080</number>
            </property>
           </widget>
          </item>
@@ -87,54 +141,10 @@
          </item>
         </layout>
        </item>
-       <item row="3" column="0">
-        <layout class="QHBoxLayout" name="horizontalLayout_4">
-         <item>
-          <widget class="QLabel" name="res_LB">
-           <property name="text">
-            <string>Resolution:</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QSpinBox" name="res_spinBox_width">
-           <property name="minimum">
-            <number>1</number>
-           </property>
-           <property name="maximum">
-            <number>9999</number>
-           </property>
-           <property name="value">
-            <number>1920</number>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QSpinBox" name="res_spinBox_height">
-           <property name="minimum">
-            <number>1</number>
-           </property>
-           <property name="maximum">
-            <number>9999</number>
-           </property>
-           <property name="value">
-            <number>1080</number>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
        <item row="4" column="0">
-        <widget class="QCheckBox" name="def_res_CB">
+        <widget class="QLabel" name="burn_in_text_LB">
          <property name="text">
-          <string>Default Resolution</string>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="0">
-        <widget class="QDialogButtonBox" name="save_reset_buttonBox">
-         <property name="standardButtons">
-          <set>QDialogButtonBox::Cancel|QDialogButtonBox::Reset|QDialogButtonBox::Save</set>
+          <string>Add Burn-in Text :</string>
          </property>
         </widget>
        </item>
@@ -148,7 +158,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>413</width>
+     <width>424</width>
      <height>21</height>
     </rect>
    </property>

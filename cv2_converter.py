@@ -32,17 +32,31 @@ def seq_converter(seq_path,out_path,fps,res=[1280,720]):
     # Resize 
     #cv2.resize(image,res)
 
+    #prepare text properties
+    text = text
+    font = cv2.FONT_HERSHEY_PLAIN
+    print(res)
+    print((int(res[0]/2),int(res[1]/2)))
+    orgin = (int(res[0]/4),int(res[1]/4))
+    # orgin = (100,200)
+    color = (255,255,255)
+    fontScale = 1
+    thickness = 1
 
-
-    # Write the images to the VideoWriter object
+    # Writing the images to the VideoWriter object
     for image in images:
         
-        print(image)
-        print(os.path.join(seq_path, image))
+        # print(image)
+        # print(os.path.join(seq_path, image))
 
         image = cv2.imread(os.path.join(seq_path, image))
         image = cv2.resize(image,res)
-         
+             
+        
+        #Put Text on sequence
+        image = cv2.putText(image,text,orgin,font,fontScale,color,thickness,cv2.LINE_AA ,False)
+
+
         video_writer.write(image)
 
     # Release the VideoWriter object

@@ -18,9 +18,9 @@ A Python application that converts an image sequence into a video using PySide f
 - PySide
 - OpenCV
 
-## Exe Download
+## Build/.Exe Download
 
-[Download](https://drive.google.com/file/d/1hkEUSoWYUskPX1Ckf8rtjIar3JnGvSh-/view?usp=sharing){.blue}
+***[Download](https://drive.google.com/file/d/1hkEUSoWYUskPX1Ckf8rtjIar3JnGvSh-/view?usp=sharing)***
 
 
 ## Installation

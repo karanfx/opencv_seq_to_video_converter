@@ -15,7 +15,7 @@ import cv2
 import os
 
 
-def seq_converter(seq_path,out_path,fps,res=[1280,720]):
+def seq_converter(seq_path,out_path,fps,text,res=[1280,720]):
     
     # Sort the file names in ascending order if necessary
     # images = [img for img in os.listdir(seq_path) if img.endswith(".jpg")]
@@ -33,12 +33,12 @@ def seq_converter(seq_path,out_path,fps,res=[1280,720]):
     #cv2.resize(image,res)
 
     #prepare text properties
-    text = text
     font = cv2.FONT_HERSHEY_PLAIN
-    print(res)
-    print((int(res[0]/2),int(res[1]/2)))
-    orgin = (int(res[0]/4),int(res[1]/4))
-    # orgin = (100,200)
+    #set relative text position
+    #bottom_right
+    orgin = (int(res[0] - (res[0]/4)),int(res[1]-(res[1]/3)))
+    # orgin = (50,50)
+    print(orgin)
     color = (255,255,255)
     fontScale = 1
     thickness = 1
@@ -54,7 +54,10 @@ def seq_converter(seq_path,out_path,fps,res=[1280,720]):
              
         
         #Put Text on sequence
-        image = cv2.putText(image,text,orgin,font,fontScale,color,thickness,cv2.LINE_AA ,False)
+        offset = 35
+        for idx,txt in enumerate(text.split("\n")):
+            
+            image = cv2.putText(image,txt,(orgin[0],orgin[1]+offset*idx),font,fontScale,color,thickness,cv2.LINE_AA ,False)
 
 
         video_writer.write(image)

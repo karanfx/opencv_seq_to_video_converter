@@ -32,9 +32,11 @@ class main_win_conveter(main_seq_conv_ui.Ui_MainWindow,QtWidgets.QMainWindow):
     def __init__(self):
         super(main_win_conveter,self).__init__()
         self.setupUi(self)
-        self.setWindowTitle("Sequence Converter")
+        self.setWindowTitle("Sequence Converter - 0.2.0")
 
         self.setStyleSheet(qdarkstyle.load_stylesheet())                    #set darkmode
+
+        #Connecting UI
         self.save_reset_buttonBox.accepted.connect(self.convert)
         #self.save_reset_buttonBox.accepted.connect(self.progress)
         self.save_reset_buttonBox.rejected.connect(self.closeprogram)
@@ -56,8 +58,10 @@ class main_win_conveter(main_seq_conv_ui.Ui_MainWindow,QtWidgets.QMainWindow):
 
 
     def convert(self):
+        #Get Data from UI
         out_path = self.out_dir_LE.text()
         seq_path = self.seq_dir_LE.text()
+        text = self.burn_in_TE.toPlainText()
 
         fps = self.fps_spinbox.value()
         res_x = self.res_spinBox_width.value() 
@@ -78,10 +82,14 @@ class main_win_conveter(main_seq_conv_ui.Ui_MainWindow,QtWidgets.QMainWindow):
         else:
             res = [res_x,res_y]
 
-        # #converting to .mp4 here
-        # pr = cv2_converter.seq_converter(seq_path,out_path,fps,res)
+        #set default burn-in text
+        # if text is "":
+        #     def_text = f'resolution: {res} \n FPS : {fps}'
+        #     text = def_text
 
-        cv2_converter.seq_converter(seq_path,out_path,fps,res)
+
+        # #converting to .mp4 here
+        cv2_converter.seq_converter(seq_path,out_path,fps,text,res)
 
         #Auto open video after exporting
         os.system(out_path)
@@ -137,7 +145,6 @@ class progressdialog(progress_ui.Ui_Dialog,QtWidgets.QDialog):
         res.reverse()
         self.res_out_LB.setText(res)
         print(res)
-
 
     # def progress_parm(self):
     #     self.progressBar.setValue(5)

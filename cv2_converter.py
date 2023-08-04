@@ -17,26 +17,23 @@ import os
 
 def seq_converter(seq_path,out_path,fps,text,res=[1280,720]):
     
-    # Sort the file names in ascending order if necessary
-    # images = [img for img in os.listdir(seq_path) if img.endswith(".jpg")]
+    # Sorting file names in ascending order
     images = os.listdir(seq_path)
     images.sort()  
     #print(images)
 
 
     # Create a VideoWriter object
-    # fourcc = cv2.VideoWriter_fourcc(*'MJPG')
     fourcc = cv2.VideoWriter_fourcc(*'mp4v')
 
     video_writer = cv2.VideoWriter(out_path,fourcc, fps,res)
-    # Resize 
-    #cv2.resize(image,res)
+    
 
-    #prepare text properties
+    #Prepare text properties
     font = cv2.FONT_HERSHEY_PLAIN
     #set relative text position
     #bottom_right
-    orgin = (int(res[0] - (res[0]/4)),int(res[1]-(res[1]/3)))
+    orgin = (int(res[0] - (res[0]/4)),int(res[1]-(res[1]/5)))
     # orgin = (50,50)
     print(orgin)
     color = (255,255,255)
@@ -47,13 +44,14 @@ def seq_converter(seq_path,out_path,fps,text,res=[1280,720]):
     for image in images:
         
         # print(image)
-        # print(os.path.join(seq_path, image))
+        print(os.path.join(seq_path, image))
 
         image = cv2.imread(os.path.join(seq_path, image))
+        #resize image
         image = cv2.resize(image,res)
              
         
-        #Put Text on sequence
+        #Add burn-in Text on Sequence
         offset = 35
         for idx,txt in enumerate(text.split("\n")):
             

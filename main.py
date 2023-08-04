@@ -19,6 +19,7 @@ from PySide6 import QtWidgets
 import os
 import PySide6.QtCore
 import PySide6.QtWidgets
+import PySide6.QtGui
 import cv2
 import qdarkstyle
 
@@ -32,9 +33,10 @@ class main_win_conveter(main_seq_conv_ui.Ui_MainWindow,QtWidgets.QMainWindow):
     def __init__(self):
         super(main_win_conveter,self).__init__()
         self.setupUi(self)
-        self.setWindowTitle("Sequence Converter - 0.2.0")
-
-        self.setStyleSheet(qdarkstyle.load_stylesheet())                    #set darkmode
+        self.setWindowTitle("Glacier Sequence Converter - 1.2.0")
+        self.setWindowIcon(PySide6.QtGui.QIcon("favicon_sq_small.png"))
+        #set darkmode
+        self.setStyleSheet(qdarkstyle.load_stylesheet(qt_api = 'PySide6'))
 
         #Connecting UI
         self.save_reset_buttonBox.accepted.connect(self.convert)
@@ -67,7 +69,7 @@ class main_win_conveter(main_seq_conv_ui.Ui_MainWindow,QtWidgets.QMainWindow):
         res_x = self.res_spinBox_width.value() 
         res_y = self.res_spinBox_height.value()
 
-        #set resolution
+        #Set resolution
         def_res = self.def_res_CB.isChecked()
         if def_res is True:
             
@@ -82,10 +84,10 @@ class main_win_conveter(main_seq_conv_ui.Ui_MainWindow,QtWidgets.QMainWindow):
         else:
             res = [res_x,res_y]
 
-        #set default burn-in text
-        # if text is "":
-        #     def_text = f'resolution: {res} \n FPS : {fps}'
-        #     text = def_text
+        #Set default burn-in text
+        if text == "":
+            def_text = f'resolution: {res} \n FPS : {fps}'
+            text = def_text
 
 
         # #converting to .mp4 here

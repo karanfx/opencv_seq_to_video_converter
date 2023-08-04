@@ -19,9 +19,11 @@ from PySide6 import QtWidgets
 import os
 import PySide6.QtCore
 import PySide6.QtWidgets
+import PySide6.QtGui
 import cv2
 import qdarkstyle
 
+#Import UI's and Utils
 import cv2_converter
 import main_seq_conv_ui
 import progress_ui
@@ -31,9 +33,12 @@ class main_win_conveter(main_seq_conv_ui.Ui_MainWindow,QtWidgets.QMainWindow):
     def __init__(self):
         super(main_win_conveter,self).__init__()
         self.setupUi(self)
-        self.setWindowTitle("Sequence Converter")
+        self.setWindowTitle("Glacier Sequence Converter - 1.2.0")
+        self.setWindowIcon(PySide6.QtGui.QIcon("favicon_sq_small.png"))
+        #set darkmode
+        self.setStyleSheet(qdarkstyle.load_stylesheet(qt_api = 'PySide6'))
 
-        self.setStyleSheet(qdarkstyle.load_stylesheet())                    #set darkmode
+        #Connecting UI
         self.save_reset_buttonBox.accepted.connect(self.convert)
         #self.save_reset_buttonBox.accepted.connect(self.progress)
         self.save_reset_buttonBox.rejected.connect(self.closeprogram)
@@ -55,14 +60,16 @@ class main_win_conveter(main_seq_conv_ui.Ui_MainWindow,QtWidgets.QMainWindow):
 
 
     def convert(self):
+        #Get Data from UI
         out_path = self.out_dir_LE.text()
         seq_path = self.seq_dir_LE.text()
+        text = self.burn_in_TE.toPlainText()
 
         fps = self.fps_spinbox.value()
         res_x = self.res_spinBox_width.value() 
         res_y = self.res_spinBox_height.value()
 
-        #set resolution
+        #Set resolution
         def_res = self.def_res_CB.isChecked()
         if def_res is True:
             
@@ -77,10 +84,14 @@ class main_win_conveter(main_seq_conv_ui.Ui_MainWindow,QtWidgets.QMainWindow):
         else:
             res = [res_x,res_y]
 
-        # #converting to .mp4 here
-        # pr = cv2_converter.seq_converter(seq_path,out_path,fps,res)
+        #Set default burn-in text
+        if text == "":
+            def_text = f'resolution: {res} \n FPS : {fps}'
+            text = def_text
 
-        cv2_converter.seq_converter(seq_path,out_path,fps,res)
+
+        # #converting to .mp4 here
+        cv2_converter.seq_converter(seq_path,out_path,fps,text,res)
 
         #Auto open video after exporting
         os.system(out_path)
@@ -136,7 +147,6 @@ class progressdialog(progress_ui.Ui_Dialog,QtWidgets.QDialog):
         res.reverse()
         self.res_out_LB.setText(res)
         print(res)
-
 
     # def progress_parm(self):
     #     self.progressBar.setValue(5)

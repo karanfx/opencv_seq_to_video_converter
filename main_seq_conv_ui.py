@@ -18,13 +18,14 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
 from PySide6.QtWidgets import (QAbstractButton, QApplication, QCheckBox, QDialogButtonBox,
     QFrame, QGridLayout, QHBoxLayout, QLabel,
     QLineEdit, QMainWindow, QMenuBar, QSizePolicy,
-    QSpinBox, QStatusBar, QToolButton, QWidget)
+    QSpinBox, QStatusBar, QTextEdit, QToolButton,
+    QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(413, 343)
+        MainWindow.resize(424, 397)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.gridLayout = QGridLayout(self.centralwidget)
@@ -35,6 +36,22 @@ class Ui_MainWindow(object):
         self.frame.setFrameShadow(QFrame.Raised)
         self.gridLayout_2 = QGridLayout(self.frame)
         self.gridLayout_2.setObjectName(u"gridLayout_2")
+        self.save_reset_buttonBox = QDialogButtonBox(self.frame)
+        self.save_reset_buttonBox.setObjectName(u"save_reset_buttonBox")
+        self.save_reset_buttonBox.setStandardButtons(QDialogButtonBox.Cancel|QDialogButtonBox.Reset|QDialogButtonBox.Save)
+
+        self.gridLayout_2.addWidget(self.save_reset_buttonBox, 7, 0, 1, 1)
+
+        self.burn_in_TE = QTextEdit(self.frame)
+        self.burn_in_TE.setObjectName(u"burn_in_TE")
+
+        self.gridLayout_2.addWidget(self.burn_in_TE, 5, 0, 1, 1)
+
+        self.def_res_CB = QCheckBox(self.frame)
+        self.def_res_CB.setObjectName(u"def_res_CB")
+
+        self.gridLayout_2.addWidget(self.def_res_CB, 6, 0, 1, 1)
+
         self.horizontalLayout = QHBoxLayout()
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.seq_dir_LB = QLabel(self.frame)
@@ -54,6 +71,32 @@ class Ui_MainWindow(object):
 
 
         self.gridLayout_2.addLayout(self.horizontalLayout, 0, 0, 1, 1)
+
+        self.horizontalLayout_4 = QHBoxLayout()
+        self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
+        self.res_LB = QLabel(self.frame)
+        self.res_LB.setObjectName(u"res_LB")
+
+        self.horizontalLayout_4.addWidget(self.res_LB)
+
+        self.res_spinBox_width = QSpinBox(self.frame)
+        self.res_spinBox_width.setObjectName(u"res_spinBox_width")
+        self.res_spinBox_width.setMinimum(1)
+        self.res_spinBox_width.setMaximum(9999)
+        self.res_spinBox_width.setValue(1920)
+
+        self.horizontalLayout_4.addWidget(self.res_spinBox_width)
+
+        self.res_spinBox_height = QSpinBox(self.frame)
+        self.res_spinBox_height.setObjectName(u"res_spinBox_height")
+        self.res_spinBox_height.setMinimum(1)
+        self.res_spinBox_height.setMaximum(9999)
+        self.res_spinBox_height.setValue(1080)
+
+        self.horizontalLayout_4.addWidget(self.res_spinBox_height)
+
+
+        self.gridLayout_2.addLayout(self.horizontalLayout_4, 3, 0, 1, 1)
 
         self.horizontalLayout_2 = QHBoxLayout()
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
@@ -92,42 +135,10 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addLayout(self.horizontalLayout_3, 2, 0, 1, 1)
 
-        self.horizontalLayout_4 = QHBoxLayout()
-        self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
-        self.res_LB = QLabel(self.frame)
-        self.res_LB.setObjectName(u"res_LB")
+        self.burn_in_text_LB = QLabel(self.frame)
+        self.burn_in_text_LB.setObjectName(u"burn_in_text_LB")
 
-        self.horizontalLayout_4.addWidget(self.res_LB)
-
-        self.res_spinBox_width = QSpinBox(self.frame)
-        self.res_spinBox_width.setObjectName(u"res_spinBox_width")
-        self.res_spinBox_width.setMinimum(1)
-        self.res_spinBox_width.setMaximum(9999)
-        self.res_spinBox_width.setValue(1920)
-
-        self.horizontalLayout_4.addWidget(self.res_spinBox_width)
-
-        self.res_spinBox_height = QSpinBox(self.frame)
-        self.res_spinBox_height.setObjectName(u"res_spinBox_height")
-        self.res_spinBox_height.setMinimum(1)
-        self.res_spinBox_height.setMaximum(9999)
-        self.res_spinBox_height.setValue(1080)
-
-        self.horizontalLayout_4.addWidget(self.res_spinBox_height)
-
-
-        self.gridLayout_2.addLayout(self.horizontalLayout_4, 3, 0, 1, 1)
-
-        self.def_res_CB = QCheckBox(self.frame)
-        self.def_res_CB.setObjectName(u"def_res_CB")
-
-        self.gridLayout_2.addWidget(self.def_res_CB, 4, 0, 1, 1)
-
-        self.save_reset_buttonBox = QDialogButtonBox(self.frame)
-        self.save_reset_buttonBox.setObjectName(u"save_reset_buttonBox")
-        self.save_reset_buttonBox.setStandardButtons(QDialogButtonBox.Cancel|QDialogButtonBox.Reset|QDialogButtonBox.Save)
-
-        self.gridLayout_2.addWidget(self.save_reset_buttonBox, 5, 0, 1, 1)
+        self.gridLayout_2.addWidget(self.burn_in_text_LB, 4, 0, 1, 1)
 
 
         self.gridLayout.addWidget(self.frame, 0, 0, 1, 1)
@@ -135,7 +146,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 413, 21))
+        self.menubar.setGeometry(QRect(0, 0, 424, 21))
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QStatusBar(MainWindow)
         self.statusbar.setObjectName(u"statusbar")
@@ -148,12 +159,13 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
+        self.def_res_CB.setText(QCoreApplication.translate("MainWindow", u"Default Resolution", None))
         self.seq_dir_LB.setText(QCoreApplication.translate("MainWindow", u"Sequece Folder : ", None))
         self.seq_dir_TB.setText(QCoreApplication.translate("MainWindow", u"...", None))
+        self.res_LB.setText(QCoreApplication.translate("MainWindow", u"Resolution:", None))
         self.out_dir_LB.setText(QCoreApplication.translate("MainWindow", u"Output Path: ", None))
         self.out_dir_TB.setText(QCoreApplication.translate("MainWindow", u"...", None))
         self.fps_LB.setText(QCoreApplication.translate("MainWindow", u"FPS :", None))
-        self.res_LB.setText(QCoreApplication.translate("MainWindow", u"Resolution:", None))
-        self.def_res_CB.setText(QCoreApplication.translate("MainWindow", u"Default Resolution", None))
+        self.burn_in_text_LB.setText(QCoreApplication.translate("MainWindow", u"Add Burn-in Text :", None))
     # retranslateUi
 

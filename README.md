@@ -29,7 +29,7 @@ A Python application that converts an image sequence into a video using PySide f
 
 1. Clone the repository:
    ```shell
-   git clone https://github.com/your-username/image-sequence-to-video.git
+   https://github.com/karanfx/opencv_seq_to_video_converter.git
 
 Install the required dependencies:
   
@@ -60,4 +60,4 @@ Fork the repository.
 Create a new branch for your feature or bug fix.
 Make your changes.
 Submit a pull request.
-Please ensure that your code adheres to the project's coding conventions and includes appropriate documentation.
+Please ensure your code follows the project's coding conventions and includes appropriate documentation.

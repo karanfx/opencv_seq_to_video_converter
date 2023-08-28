@@ -18,6 +18,13 @@ A Python application that converts an image sequence into a video using PySide f
 - PySide
 - OpenCV
 
+## Build/.Exe Download
+
+**[Download Version 1.1.0](https://drive.google.com/file/d/1hkEUSoWYUskPX1Ckf8rtjIar3JnGvSh-/view?usp=sharing)**
+
+**[Download Version 1.2.0](https://drive.google.com/file/d/1hkEUSoWYUskPX1Ckf8rtjIar3JnGvSh-/view?usp=sharing)**
+
+
 ## Installation
 
 1. Clone the repository:
@@ -26,9 +33,9 @@ A Python application that converts an image sequence into a video using PySide f
 
 Install the required dependencies:
   
-  pip install -r requirements.txt
+    pip install -r requirements.txt
 
-##Usage
+## Usage
 ---
 
 Run the application:   
@@ -45,7 +52,7 @@ The converted video will be saved in the specified output folder.
 Screenshots
 
 
-##Contributing
+## Contributing
 ---
 Contributions are welcome! If you would like to contribute to this project, please follow these steps:
 

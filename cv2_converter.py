@@ -51,11 +51,11 @@ def seq_converter(seq_path,out_path,fps,text,res=[1280,720]):
         image = cv2.resize(image,res)
              
         
-        # #Add burn-in Text on Sequence
-        # offset = 35
-        # for idx,txt in enumerate(text.split("\n")):
+        #Add burn-in Text on Sequence
+        offset = 35
+        for idx,txt in enumerate(text.split("\n")):
             
-        #     image = cv2.putText(image,txt,(orgin[0],orgin[1]+offset*idx),font,fontScale,color,thickness,cv2.LINE_AA ,False)
+            image = cv2.putText(image,txt,(orgin[0],orgin[1]+offset*idx),font,fontScale,color,thickness,cv2.LINE_AA ,False)
 
 
         video_writer.write(image)
